@@ -28,7 +28,7 @@ function display() {
                 output.innerText = '';
             }
             else if (button.id === deleteOneButton.id) {
-                output.value = output.value.slice(0, -1);
+                output.innerText = output.innerText.slice(0, -1);
             }
             else if (button.id === one.id) {
                 output.innerText += '1';
@@ -61,9 +61,21 @@ function display() {
                 output.innerText += '0';
             }
             else if (button.id === decimalButton.id) {
-                if (!output.value.includes('.')) {
+                if (!output.innerText.includes('.')) {
                     output.innerText += '.';
                 }
+            }
+            else if (button.id === addButton.id) {
+                output.innerText += '+';
+            }
+            else if (button.id === subtractButton.id) {
+                output.innerText += '-';
+            }
+            else if (button.id === multiplyButton.id) {
+                output.innerText += '*';
+            }
+            else if (button.id === divideButton.id) {
+                output.innerText += '/';
             }
         });
     });
@@ -101,34 +113,18 @@ function display() {
 }
 
 function operatorAdd(a, b) {
-    addButton.addEventListener('click', () => {
-        const result = add(a, b);
-        document.getElementById('display').innerText = result;
-    });
     return a + b;
 }   
 
 function operatorSubtract(a, b) {
-    subtractButton.addEventListener('click', () => {
-        const result = subtract(a, b);
-        document.getElementById('display').innerText = result;
-    });
     return a - b;
 }
 
 function operatorMultiply(a, b) {
-    multiplyButton.addEventListener('click', () => {
-        const result = multiply(a, b);
-        document.getElementById('display').innerText = result;
-    });
     return a * b;
 }
 
 function operatorDivide(a, b) {
-    divideButton.addEventListener('click', () => {
-        const result = divide(a, b);
-        document.getElementById('display').innerText = result;
-    });
     if (b === 0) {
         return 'Error: Division by zero';
     }
