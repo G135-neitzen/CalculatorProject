@@ -24,6 +24,16 @@ function display() {
     const buttons = document.querySelectorAll('#whole button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
+            if (output.innerText.length >0 &&
+                (button.id === addButton.id || button.id === subtractButton.id ||
+                 button.id === multiplyButton.id || button.id === divideButton.id)) {
+                // Prevent adding multiple operators in a row
+                const lastChar = output.innerText.slice(-1);
+                if (['+', '-', '*', '/'].includes(lastChar)) {
+                    output.innerText = output.innerText.slice(0, -1) + button.innerText;
+                    return;
+                }
+            }
             if (button.id === deleteAllButton.id) {
                 output.innerText = '';
             }
